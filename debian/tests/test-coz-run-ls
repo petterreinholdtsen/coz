@@ -1,0 +1,15 @@
+#!/bin/sh
+
+set -e
+
+coz run --- /bin/ls
+
+if grep -q 'startup	time=' profile.coz ; then
+    echo "success: coz ran successfully"
+    cat profile.coz |sed 's/^/  /'
+    rm profile.coz
+else
+    echo "error: coz failed to run"
+    rm profile.coz
+    exit 1
+fi

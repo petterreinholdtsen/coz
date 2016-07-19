@@ -1,0 +1,30 @@
+Source: coz-profiler
+Section: net
+Priority: optional
+Maintainer:Petter Reinholdtsen <pere@debian.org>
+Build-Depends: debhelper (>= 9~)
+ , clang
+ , python
+Testsuite: autopkgtest
+Standards-Version: 3.9.8
+Homepage: http://coz-profiler.org/
+Vcs-Browser: https://anonscm.debian.org/gitweb/?p=collab-maint/coz-profiler.git
+Vcs-Git: https://anonscm.debian.org/git/collab-maint/coz-profiler.git
+
+Package: coz-profiler
+Architecture: any
+Depends: ${misc:Depends}, ${shlibs:Depends}
+ , python
+Description: Finding Code that Counts with Causal Profiling
+ Coz is a code profiler that find optimization opportunities
+ missed by traditional profilers. Coz employs a technique called
+ causal profiling that measures optimization potential. This measurement
+ matches developers' assumptions about profilers: that optimizing
+ highly-ranked code will have the greatest impact on performance. Causal
+ profiling measures optimization potential for serial, parallel, and
+ asynchronous programs without instrumentation of special handling for
+ library calls and concurrency primitives. Instead, a causal profiler
+ uses performance experiments to predict the effect of
+ optimizations. This allows the profiler to establish causality:
+ "optimizing function X will have effect Y," exactly the measurement
+ developers had assumed they were getting all along.
