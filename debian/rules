@@ -1,5 +1,20 @@
 #!/usr/bin/make -f
 
+# Make tarball for Debian.  Remove irrelevant parts with various
+# copyright status and licenses to reduce the amount of files we need
+# to track the copyright status of.
+DEBIAN_DIR = $(dir $(firstword $(MAKEFILE_LIST)))
+ver=0.0.git
+gitref=master
+get-orig-source:
+	cd $(DEBIAN_DIR)../ && \
+	git clone -b $(gitref) https://github.com/plasma-umass/coz coz-$(ver) && \
+	git clone -b gh-pages https://github.com/plasma-umass/coz coz-$(ver)/viewer && \
+	rm -rf coz-$(ver)/.git coz-$(ver)/viewer/.git && \
+	rm -rf coz-$(ver)/benchmarks/ && \
+	tar zcf coz-$(ver).tar.gz coz-$(ver) && \
+	rm -rf coz-$(ver)
+
 export DH_VERBOSE=1
 
 %:
