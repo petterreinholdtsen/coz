@@ -20,5 +20,11 @@ export DH_VERBOSE=1
 %:
 	dh $@
 
+# Generate manual page from RST document
+debian/coz.1: debian/coz.rst
+	rst2man $< > $@
+override_dh_installman: debian/coz.1
+	dh_installman
+
 override_dh_auto_test:
 	$(MAKE) check || echo "warning: unable to run self test"
