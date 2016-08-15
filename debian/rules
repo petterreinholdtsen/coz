@@ -8,14 +8,14 @@ ver=0.0.git
 gitref=master
 get-orig-source:
 	cd $(DEBIAN_DIR)../ && \
-	git clone -b $(gitref) https://github.com/plasma-umass/coz coz-$(ver) && \
-	git clone -b gh-pages https://github.com/plasma-umass/coz coz-$(ver)/viewer && \
-	make -C coz-$(ver) deps/ccutil && \
-	make -C coz-$(ver) deps/libelfin/Makefile && \
-	rm -rf coz-$(ver)/.git coz-$(ver)/viewer/.git coz-$(ver)/deps/*/.git && \
-	rm -rf coz-$(ver)/benchmarks/ && \
-	tar zcf coz-$(ver).tar.gz coz-$(ver) && \
-	rm -rf coz-$(ver)
+	git clone -b $(gitref) https://github.com/plasma-umass/coz coz-profiler-$(ver) && \
+	git clone -b gh-pages https://github.com/plasma-umass/coz coz-profiler-$(ver)/viewer && \
+	make -C coz-profiler-$(ver) deps/ccutil && \
+	make -C coz-profiler-$(ver) deps/libelfin/Makefile && \
+	rm -rf coz-profiler-$(ver)/.git coz-profiler-$(ver)/viewer/.git coz-profiler-$(ver)/deps/*/.git && \
+	rm -rf coz-profiler-$(ver)/benchmarks/ && \
+	tar zcf coz-profiler-$(ver).tar.gz coz-profiler-$(ver) && \
+	rm -rf coz-profiler-$(ver)
 
 export DH_VERBOSE=1
 
