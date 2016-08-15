@@ -10,7 +10,9 @@ get-orig-source:
 	cd $(DEBIAN_DIR)../ && \
 	git clone -b $(gitref) https://github.com/plasma-umass/coz coz-$(ver) && \
 	git clone -b gh-pages https://github.com/plasma-umass/coz coz-$(ver)/viewer && \
-	rm -rf coz-$(ver)/.git coz-$(ver)/viewer/.git && \
+	make -C coz-$(ver) deps/ccutil && \
+	make -C coz-$(ver) deps/libelfin/Makefile && \
+	rm -rf coz-$(ver)/.git coz-$(ver)/viewer/.git coz-$(ver)/deps/*/.git && \
 	rm -rf coz-$(ver)/benchmarks/ && \
 	tar zcf coz-$(ver).tar.gz coz-$(ver) && \
 	rm -rf coz-$(ver)
